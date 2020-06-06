@@ -25,6 +25,7 @@ class FriendsController < ApplicationController
     end
 
     def add_friend(friend_id, friend_name, priority)
+        p friend_id
         User.add_friend(friend_id, friend_name)
         res = FriendsMapping.create(@@id, friend_id, priority)
         render :json => res.to_json
