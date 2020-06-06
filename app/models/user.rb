@@ -27,7 +27,7 @@ class User < BaseDBModel
     return res.to_json
   end
 
-  def self.add_friend(friend_id, friend_name, )
+  def self.add_friend(friend_id, friend_name)
     doc = {
       # '_id' => _id,
       'name' => name,
@@ -36,3 +36,4 @@ class User < BaseDBModel
     FriendsMapping.create()
     self.create(:Users, doc)
   end
+end
