@@ -3,6 +3,7 @@ require_relative "../models/user.rb"
 require_relative "../models/Friends_mapping.rb"
 
 class FriendsController < ApplicationController
+    skip_before_filter :verify_authenticity_token  
     @@id = nil
 
     def get_friends_list
