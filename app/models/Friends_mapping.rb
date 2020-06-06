@@ -19,8 +19,9 @@ class FriendsMapping < BaseDBModel
     def self.get_friends_mappings(owner_id)
         owner_id_obj = BSON::ObjectId(owner_id)
         query = {:owner_id => owner_id_obj}
+        # query = {:owner_id => owner_id_obj}
         p query
-        res = self.find(:Users, query).sort({ "priority": 1 })
+        res = self.find(:Users, {:owner_id => objectid}).sort({ "priority": 1 })
         return res.to_json
     end 
     
