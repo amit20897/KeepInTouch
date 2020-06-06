@@ -22,7 +22,7 @@ class User < BaseDBModel
 
   def self.get_friends_list()
     query = {}
-    res = find(:Users, query)
+    res = @find(:Users, query)
     return res.to_json
   end
 
