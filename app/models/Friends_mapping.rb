@@ -1,5 +1,5 @@
 class FriendsMapping < BaseDBModel
-    # @@_id = nil
+    @@_id = nil
     @@friend_id = nil
     @@owner_id = nil
     @@priority = nil
@@ -7,7 +7,7 @@ class FriendsMapping < BaseDBModel
   
     #user_name:string id:string priority:string last_met:datetime last_talked:datetime address:string phone:string email:string
     
-    def initialize(friend_id, owner_id, priority)
+    def initialize(id, friend_id, owner_id, priority)
       super
       @friend_id = @friend_id
       @priorities = @priorities
@@ -26,14 +26,5 @@ class FriendsMapping < BaseDBModel
       }
       res = super(:FriendsMapping, doc)
       return res.to_json
-    end
-  
-    def self.add_friend(friend_id, friend_name, )
-      doc = {
-        '_id' => _id,
-        'name' => name,
-        'priorities' => {}
-      }
-      self.create(:Users, doc)
     end
   
