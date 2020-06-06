@@ -44,11 +44,24 @@ class MeetupController < ApplicationController
 	  end
   end
 
+  def request
+	  id = params[:id]
+	  meeting_id = params[:id]
+
+	  db = BaseDBModel.new()
+	  resipient = db.find_one(:Meetups, {:_id => BSON::ObjectId(meeting_id)})[:owner_id]
+	  db.create(:Requests, {
+		  		:Type : "MeetingInvite",
+				:relevant_id : BSON::ObjectId(meeting_id),
+				:owner_id : BSON::ObjectId(id),
+				:status : "Pending",
+				:Destionation_id : resipient
+	  })
+
   def submit
 	  id = params[:id]
 	  start_time = params[:start]
 	  end_time = params[:start]
-	  db = BaseDBModel.new()
 
 	  db.create(:Meetups, {"owner_id": BSON::ObjectId(id), "start": Time.parse(start_time), "end": Time.parse(end_time)})
   end
