@@ -1,6 +1,6 @@
 require_relative "../models/base_db_model"
 require_relative "../models/user.rb"
-require_relative "../models/friends_mapping.rb"
+require_relative "../models/Friends_mapping.rb"
 
 class FriendsController < ApplicationController
 
