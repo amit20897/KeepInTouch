@@ -15,12 +15,13 @@ class FriendsMapping < BaseDBModel
         @priorities = @priorities
       end
       
-      def self.get_friends_mappings(owner_id)
+    def self.get_friends_mappings(owner_id)
         query = {'owner_id' => owner_id}
         res self.find(:Users, query).sort({ "priority": 1 })
         return res.to_json
+    end 
     
-      def self.create(owner_id, friend_id, priority)
+    def self.create(owner_id, friend_id, priority)
         doc = {
             'owner_id' => owner_id,
             'friend_id' => friend_id,
@@ -28,9 +29,9 @@ class FriendsMapping < BaseDBModel
         }
         res = super(:FriendsMapping, doc)
         return res.to_json
-      end
+    end
 
-  def self.finalize(object_id)
+    def self.finalize(object_id)
 		@@client.close
 	end
 
