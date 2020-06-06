@@ -3,13 +3,23 @@ class SuggestController < ApplicationController
   def get
 	  owner_id = params[:id]
 	  db = BaseDBModel.new()
-	  best_priority = BSON::Document.new({'priority': 999})
-	  db.find(:FriendsMapping, {:owner_id => BSON::ObjectId(owner_id)}).each do |doc|
-		  if doc['priority'] < best_priority['priority']
-			  p doc['priority']
-			  best_priority = doc
+	  best_priority = Array.new(5, BSON::Document.new({'priority': 999, '_id':'0'}))
+	  i = 0
+	  db.find(:FriendsMapping, {:owner_id => BSON::ObjectId(params[:id])}).each do |doc|
+		  p doc
+		  while i < best_priority.length()
+			  if doc['priority'] < best_priority[i]['priority'] 
+				  break if best_priority.include? doc
+				  best_priority[i] = doc
+			  end
+			  i = i + 1
 		  end
 	  end
-	  @suggestion=[best_priority.to_json]
+	  i = 0
+	  while i < best_priority.length()
+		  best_priority[i] = db.find_one(:Users, {:_id => best_priority[i]['friend_id']})
+		  i = i + 1
+	  end
+	  render :json => best_priority.compact
   end
 end
