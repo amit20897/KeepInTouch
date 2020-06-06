@@ -18,6 +18,7 @@ class User < BaseDBModel
     query = {'name' => user_name}
     res = self.find_one(:Users, query)
     return res.to_json
+  end
 
   def self.get_friends_list()
     query = {}
