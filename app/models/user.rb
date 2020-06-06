@@ -6,11 +6,11 @@ class User
   @@_id = nil
   @@name = nil
   priorities = nil
+  @@client = Mongo::Client.new('mongodb+srv://KeepingTouch2:NotmyName3@keepingtouch-cpcht.mongodb.net/KeepingTouch?retryWrites=true&w=majority')
 
   #user_name:string id:string priority:string last_met:datetime last_talked:datetime address:string phone:string email:string
   
   def initialize(name, priorities)
-    @@client = Mongo::Client.new('mongodb+srv://KeepingTouch2:NotmyName3@keepingtouch-cpcht.mongodb.net/KeepingTouch?retryWrites=true&w=majority')
     # @_id = _id
     @name = @name
     @priorities = @priorities
