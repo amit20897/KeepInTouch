@@ -10,7 +10,7 @@ class FriendsController < ApplicationController
         data_hash = JSON.parse(friends_mappings)
         p data_hash
         data_hash.each do |map|
-            p map.friend_id
+            p map[:friend_id]
         end 
         res = User.get_users_list()
         render :json => res.to_json
