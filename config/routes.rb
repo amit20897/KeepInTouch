@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
 
-  get 'friends_list', to: 'friends#get_friend_list'
+  get 'friends_list', to: 'friends#get_friends_list'
   get 'get_friend_by_username', to: 'friends#get_friend_by_username'
   get 'suggestions', to: 'suggestions#get_suggestions'
 
