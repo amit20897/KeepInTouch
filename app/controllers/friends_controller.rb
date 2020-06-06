@@ -4,7 +4,7 @@ require_relative "../models/user.rb"
 class FriendsController < ApplicationController
 
     def get_friends_list
-        friends_mappings = FriendsMapping.get_friends_mappings
+        friends_mappings = FriendsMapping.get_friends_mappings('1')
         friends_mappings.each do |map|
             p map.friend_id
         end 
