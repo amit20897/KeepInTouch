@@ -14,6 +14,22 @@ class BaseDBModel
 
 	def find(collection, filter)
 		collection = @@client[collection]
+		return collection.find(filter)
+	end
+
+	def find_one(collection, filter)
+		collection = @@client[collection]
 		return collection.find(filter).first
+	end
+
+	def create(collection, document)
+		collection = @@client[collection]
+		collection.insert_one(document)
+	end
+
+	def delete(collection, filter)
+		collection = @@client[collection]
+		result = collection.delete_may(filter)
+		return result.deleted_count
 	end
 end
