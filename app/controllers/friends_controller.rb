@@ -3,8 +3,8 @@ require_relative "../models/user.rb"
 
 class FriendsController < ApplicationController
 
-    def get_friend_list
-        res = User.get_friend_list()
+    def get_friends_list
+        res = User.get_friends_list()
         render :json => res.to_json
     end
 
