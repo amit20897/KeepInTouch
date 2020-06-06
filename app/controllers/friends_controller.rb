@@ -3,6 +3,7 @@ require_relative "../models/user.rb"
 require_relative "../models/Friends_mapping.rb"
 
 class FriendsController < ApplicationController
+    @@id = nil
 
     def get_friends_list
         friends_mappings = FriendsMapping.get_friends_mappings('5edaa5f2ea613908a59465b7')
@@ -19,7 +20,7 @@ class FriendsController < ApplicationController
 
     def get_user_by_username
         user_name = params.require(:username)
-        res = User.get_friend(user_name)
+        res = User.get_user_by_username(user_name)
 	    render :json => res.to_json
     end
 
