@@ -32,4 +32,10 @@ class BaseDBModel
 		result = collection.delete_may(filter)
 		return result.deleted_count
 	end
+
+	def update(collection, filter, changes)
+		collection = @@client[collection]
+		result = collection.update_one( filter, { '$set' => changes } )
+		p result.modified_count
+	end
 end
