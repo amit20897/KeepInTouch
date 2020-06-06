@@ -4,11 +4,15 @@ require_relative "../models/user.rb"
 class FriendsController < ApplicationController
 
     def get_friends_list
-        res = User.get_friends_list()
+        friends_mappings = FriendsMapping.get_friends_mappings
+        friends_mappings.each do |map|
+            p map.friend_id
+        end 
+        res = User.get_users_list()
         render :json => res.to_json
     end
 
-    def get_friend_by_username
+    def get_user_by_username
         user_name = params.require(:username)
         res = User.get_friend(user_name)
 	    render :json => res.to_json

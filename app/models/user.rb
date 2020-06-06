@@ -11,18 +11,24 @@ class User
   #user_name:string id:string priority:string last_met:datetime last_talked:datetime address:string phone:string email:string
   
   def initialize(name, priorities)
-    # @_id = _id
+    @_id = _id
     @name = @name
     @priorities = @priorities
   end
   
-  def self.get_friend(user_name)
+  def self.get_user_by_username(user_name)
     query = {'name' => user_name}
     res = self.find_one(:Users, query)
     return res.to_json
   end
 
-  def self.get_friends_list()
+  def self.get_user_by_id(_id)
+    query = {'_id' => _id}
+    res = self.find_one(:Users, query)
+    return res.to_json
+  end
+
+  def self.get_users_list()
     query = {}
     res = self.find(:Users, query)
     return res.to_json
