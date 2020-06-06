@@ -30,32 +30,32 @@ class FriendsMapping < BaseDBModel
         return res.to_json
       end
 
-  def finalize(object_id)
+  def self.finalize(object_id)
 		@@client.close
 	end
 
-	def find(collection, filter)
+	def self.find(collection, filter)
 		collection = @@client[collection]
 		return collection.find(filter)
 	end
 
-	def find_one(collection, filter)
+	def self.find_one(collection, filter)
 		collection = @@client[collection]
 		return collection.find(filter).first
 	end
 
-	def create(collection, document)
+	def self.create(collection, document)
 		collection = @@client[collection]
 		collection.insert_one(document)
 	end
 
-	def delete(collection, filter)
+	def self.delete(collection, filter)
 		collection = @@client[collection]
 		result = collection.delete_may(filter)
 		return result.deleted_count
 	end
 
-	def update(collection, filter, changes)
+	def self.update(collection, filter, changes)
 		collection = @@client[collection]
 		result = collection.update_one( filter, { '$set' => changes } )
 		p result.modified_count
