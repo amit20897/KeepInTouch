@@ -5,8 +5,6 @@ class User < BaseDBModel
   @@name = nil
   priorities = nil
 
-
-
   #user_name:string id:string priority:string last_met:datetime last_talked:datetime address:string phone:string email:string
   
   def initialize(name, priorities)
