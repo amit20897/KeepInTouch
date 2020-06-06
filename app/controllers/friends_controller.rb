@@ -9,11 +9,12 @@ class FriendsController < ApplicationController
         p 'data_hash'
         data_hash = JSON.parse(friends_mappings)
         p data_hash
+        list = []
         data_hash.each do |map|
-            p map[:friend_id]
+            p map["friend_id"]
+            list.append(map["friend_id"])
         end 
-        res = User.get_users_list()
-        render :json => res.to_json
+        render :json => list.to_json
     end
 
     def get_user_by_username
