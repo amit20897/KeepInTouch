@@ -4,7 +4,6 @@ class BaseDBModel
 	@@client = nil
 
 	def initialize()
-
 		@@client = Mongo::Client.new('mongodb+srv://KeepingTouch2:NotmyName3@keepingtouch-cpcht.mongodb.net/KeepingTouch?retryWrites=true&w=majority')
 	end
 
