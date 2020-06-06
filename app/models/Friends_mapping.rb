@@ -6,11 +6,12 @@ class FriendsMapping < BaseDBModel
     @@friend_id = nil
     @@owner_id = nil
     @@priority = nil
+    @@client = Mongo::Client.new('mongodb+srv://KeepingTouch2:NotmyName3@keepingtouch-cpcht.mongodb.net/KeepingTouch?retryWrites=true&w=majority')
+
 
   #user_name:string id:string priority:string last_met:datetime last_talked:datetime address:string phone:string email:string
   
     def initialize(id, friend_id, owner_id, priority)
-        @@client = Mongo::Client.new('mongodb+srv://KeepingTouch2:NotmyName3@keepingtouch-cpcht.mongodb.net/KeepingTouch?retryWrites=true&w=majority')
         @friend_id = @friend_id
         @priorities = @priorities
       end
