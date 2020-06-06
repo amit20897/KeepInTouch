@@ -6,8 +6,9 @@ class FriendsController < ApplicationController
 
     def get_friends_list
         friends_mappings = FriendsMapping.get_friends_mappings('5edaa5f2ea613908a59465b7')
-        p 'friends_mappings'
-        p friends_mappings
+        p 'data_hash'
+        data_hash = JSON.parse(friends_mappings)
+        p data_hash
         friends_mappings.each do |map|
             p map.friend_id
         end 
